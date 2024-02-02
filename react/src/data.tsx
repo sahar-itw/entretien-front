@@ -1,4 +1,4 @@
-const data = [
+const projects = [
   {
     title: "Project Alpha",
     description:
@@ -52,10 +52,10 @@ const data = [
 ];
 
 export const axios = {
-  get(url: "https://my-data.com") {
+  get(url: "https://my-data.com"): Promise<{ data: any }> {
     return new Promise((res) => {
       setTimeout(() => {
-        res(data);
+        res({ data: projects });
       }, 1_000);
     });
   },
