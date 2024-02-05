@@ -1,5 +1,10 @@
 // Goal: find the golden cup -> 🏆
 
+import { assert } from "../assert";
+import { title } from "../title";
+
+title("Treasure");
+
 const room = {
   rightDoor: {
     leftDoor: {
@@ -52,4 +57,7 @@ function findPathToGoldenCup(room: any): any {
   return "";
 }
 
-console.assert(findPathToGoldenCup(room) === "left,left,right,right");
+assert(
+  "The function works",
+  findPathToGoldenCup(room) === "left,left,right,right"
+);
