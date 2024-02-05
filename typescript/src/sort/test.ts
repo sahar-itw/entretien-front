@@ -1,4 +1,4 @@
-import { assert } from "./assert";
+import { assert } from "../assert";
 const arr = [100, 3, 54, 83];
 
 export function test(sort: (arr: number[]) => number[]) {
