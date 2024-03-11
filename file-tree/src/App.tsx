@@ -1,3 +1,14 @@
+type Directory = {
+  type: "directory";
+  name: string;
+  children: (Directory | File)[];
+};
+
+type File = {
+  type: "file";
+  name: string;
+};
+
 const fileTree: Directory = {
   type: "directory",
   name: "file-tree",
