@@ -1,16 +1,3 @@
-import { useState } from "react";
-
-type Directory = {
-  type: "directory";
-  name: string;
-  children: (Directory | File)[];
-};
-
-type File = {
-  type: "file";
-  name: string;
-};
-
 const fileTree: Directory = {
   type: "directory",
   name: "file-tree",
@@ -70,50 +57,6 @@ const fileTree: Directory = {
   ],
 };
 
-function App() {
-  return <Directory directory={fileTree} defaultOpen={true} />;
-}
+function App() {}
 
 export default App;
-
-function Directory({
-  directory,
-  defaultOpen,
-}: {
-  directory: Directory;
-  defaultOpen: boolean;
-}): JSX.Element {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-  return (
-    <div className="directory">
-      {!defaultOpen && (
-        <div
-          onClick={() => setIsOpen((prevState) => !prevState)}
-          className="flex-center"
-        >
-          <p className={"chevron " + (isOpen ? "rotate" : "")}>{">"}</p>
-          <p className="folderName">{directory.name}</p>
-        </div>
-      )}
-      {isOpen && (
-        <div className="children">
-          {directory.children.map((child) =>
-            child.type === "directory" ? (
-              <Directory
-                key={child.name}
-                directory={child}
-                defaultOpen={false}
-              />
-            ) : (
-              <File key={child.name} file={child} />
-            )
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function File({ file }: { file: File }): JSX.Element {
-  return <p>{file.name}</p>;
-}
